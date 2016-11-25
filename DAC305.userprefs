@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\potatoScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\Documents\MenuTest\Assets\Scripts\Menu.cs">
     <Files>
-      <File FileName="Assets\potatoScript.cs" Line="4" Column="15" />
+      <File FileName="..\..\..\Documents\MenuTest\Assets\Scripts\Menu.cs" Line="15" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
