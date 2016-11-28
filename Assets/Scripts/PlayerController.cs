@@ -25,8 +25,10 @@ public class PlayerController : MonoBehaviour
 		float horizontal = Input.GetAxis ("Horizontal");
 
 		HandleMovement (horizontal);
-		if (Input.GetKey(KeyCode.Q)){
-			SetBlue();
+		if (Input.GetKey (KeyCode.Q)) {
+			SetBlue ();
+		} else if (Input.GetKey(KeyCode.W)){
+			SetYellow();
 		} else {
 			SetNeutral ();
 		}
@@ -37,12 +39,24 @@ public class PlayerController : MonoBehaviour
 		myRigidbody.velocity = new Vector2 (horizontal * movementspeed, myRigidbody.velocity.y);
 	}
 
+	private void SetYellow() {
+		
+		mySprite.color = Color.yellow;
+		myCollider.enabled = false;
+		myCollider.enabled = true;
+
+	gameObject.transform.localScale = new Vector2 (3, 3);
+
+	}
+
 	private void SetBlue() {
 
 		mySprite.color = Color.blue;
 		myCollider.sharedMaterial = blueMat;
 		myCollider.enabled = false;
 		myCollider.enabled = true;
+		{
+			gameObject.transform.localScale = new Vector2 (10, 10);}
 	}
 
 	private void SetNeutral() {
@@ -50,5 +64,8 @@ public class PlayerController : MonoBehaviour
 		myCollider.sharedMaterial = null;
 		myCollider.enabled = false;
 		myCollider.enabled = true;
+		
+			{
+			gameObject.transform.localScale = new Vector2 (10, 10);}
 	}
 }
