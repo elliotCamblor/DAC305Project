@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 	private SpriteRenderer mySprite;
 	private CircleCollider2D myCollider;
 	public PhysicsMaterial2D blueMat;
+	public int boundaryCounter;
 
 	[SerializeField]
 	private float movementspeed;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
 		myRigidbody = GetComponent<Rigidbody2D> ();
 		mySprite = GetComponent<SpriteRenderer> ();
 		myCollider = GetComponent<CircleCollider2D> ();
+		boundaryCounter = 1;
 	}
 	
 	// Update is called once per frame
@@ -36,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
 	private void HandleMovement(float horizontal)
 	{
-		myRigidbody.velocity = new Vector2 (horizontal * movementspeed, myRigidbody.velocity.y);
+		myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, horizontal * movementspeed);
 	}
 
 	private void SetYellow() {
@@ -55,8 +57,7 @@ public class PlayerController : MonoBehaviour
 		myCollider.sharedMaterial = blueMat;
 		myCollider.enabled = false;
 		myCollider.enabled = true;
-		{
-			gameObject.transform.localScale = new Vector2 (10, 10);}
+		gameObject.transform.localScale = new Vector2 (10, 10);
 	}
 
 	private void SetNeutral() {
@@ -64,8 +65,6 @@ public class PlayerController : MonoBehaviour
 		myCollider.sharedMaterial = null;
 		myCollider.enabled = false;
 		myCollider.enabled = true;
-		
-			{
-			gameObject.transform.localScale = new Vector2 (10, 10);}
+		gameObject.transform.localScale = new Vector2 (10, 10);
 	}
 }
