@@ -26,13 +26,13 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update() {
 		if (boundaryCounter <= 0) {
+			Debug.Log ("here");
 			ResetPopo();
 		}
 	}
 	void FixedUpdate () 
 	{
 		float horizontal = Input.GetAxis ("Horizontal");
-
 		HandleMovement (horizontal);
 		if (Input.GetKey (KeyCode.Q)) {
 			SetBlue ();
@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
 	private void HandleMovement(float horizontal)
 	{
 		myRigidbody.velocity = new Vector2 (horizontal * movementspeed, myRigidbody.velocity.y);
+		Debug.Log (myRigidbody.velocity);
 	}
 
 	private void SetYellow() {
