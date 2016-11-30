@@ -41,7 +41,10 @@ public class PlayerController : MonoBehaviour
 		if (isMovementLocked)
 			return;
 		horizontal = Input.GetAxis ("Horizontal");
-		HandleMovement (horizontal);
+		//if (!isClimbing){
+			HandleMovement (horizontal);
+
+		//else 
 		if ((Input.GetKey (KeyCode.Q)) && (Input.GetKey (KeyCode.W))) {
 			SetGreen ();
 		}else if (Input.GetKey (KeyCode.Q)) {
