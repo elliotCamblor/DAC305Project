@@ -5,12 +5,10 @@ public class BoundaryController : MonoBehaviour {
 
 	public GameObject Popo;
 	private PlayerController controller;
-	private SphereCollider popoCollider;
 	// Use this for initialization
 	void Start () {
 		Popo = GameObject.Find ("Popo");
 		controller = Popo.GetComponent<PlayerController>();
-		popoCollider = Popo.GetComponent<SphereCollider>();
 	}
 	
 	// Update is called once per frame
