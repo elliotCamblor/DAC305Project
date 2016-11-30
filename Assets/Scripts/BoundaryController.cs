@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BoundaryController : MonoBehaviour {
 
-	public GameObject Popo;
+	private GameObject Popo;
 	private PlayerController controller;
 	// Use this for initialization
 	void Start () {
@@ -19,14 +19,12 @@ public class BoundaryController : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.tag == "Player"){
 			controller.boundaryCounter++;
-			Debug.Log("enter");
 		}
 	}
 
 	void OnTriggerExit(Collider other){
 		if (other.gameObject.tag == "Player"){
 			controller.boundaryCounter--;
-			Debug.Log("exit");
 		}
 	}
 }

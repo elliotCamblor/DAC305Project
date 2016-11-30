@@ -10,30 +10,37 @@ public class PlayerController : MonoBehaviour
 	public int boundaryCounter;
 	public Material whiteTexture;
 	public Material blueTexture;
+	public Vector3 lastCheck;
+	private bool isMovementLocked;
+
 
 	[SerializeField]
 	private float movementspeed;
-
+	private float horizontal;
 
 	// Use this for initialization
 	void Start () {
 		myRigidbody = GetComponent<Rigidbody> ();
 		myCollider = GetComponent<SphereCollider> ();
 		myRenderer = GetComponent<MeshRenderer>();
+		lastCheck = GameObject.Find("checkpoint_0").transform.position;
 		boundaryCounter = 0;
+		isMovementLocked = false;
 	}
 
 	// Update is called once per frame
 	void Update() {
 		if (boundaryCounter <= 0) {
-			Debug.Log ("here");
 			ResetPopo();
 		}
 	}
 	void FixedUpdate () 
 	{
-		float horizontal = Input.GetAxis ("Horizontal");
-		HandleMovement (horizontal);
+	
+		if (!isMovementLocked){
+			horizontal = Input.GetAxis ("Horizontal");
+			HandleMovement (horizontal);
+		}
 		if (Input.GetKey (KeyCode.Q)) {
 			SetBlue ();
 		} else if (Input.GetKey(KeyCode.W)){
@@ -46,7 +53,6 @@ public class PlayerController : MonoBehaviour
 	private void HandleMovement(float horizontal)
 	{
 		myRigidbody.velocity = new Vector2 (horizontal * movementspeed, myRigidbody.velocity.y);
-		Debug.Log (myRigidbody.velocity);
 	}
 
 	private void SetYellow() {
@@ -71,6 +77,18 @@ public class PlayerController : MonoBehaviour
 	}
 
 	private void ResetPopo (){
-		gameObject.transform.position = new Vector3 (0.09f, 1.46f, 0f);
+		gameObject.transform.position = lastCheck;
+		myRigidbody.velocity = new Vector2 (0, 0);
+		isMovementLocked = true;
+		StartCoroutine (MovementDelay ());
+
+	}
+
+	private IEnumerator MovementDelay()
+	{
+		// Wait for 1 second
+		yield return new WaitForSeconds(1);
+		isMovementLocked = false;
+		horizontal = 0.0f;
 	}
 }
