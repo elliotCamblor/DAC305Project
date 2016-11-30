@@ -3,11 +3,13 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour 
 {
-	private Rigidbody2D myRigidbody;
-	private SpriteRenderer mySprite;
-	private CircleCollider2D myCollider;
-	public PhysicsMaterial2D blueMat;
+	private Rigidbody myRigidbody;
+	private SphereCollider myCollider;
+	private MeshRenderer myRenderer;
+	public PhysicMaterial blueMat;
 	public int boundaryCounter;
+	public Material whiteTexture;
+	public Material blueTexture;
 
 	[SerializeField]
 	private float movementspeed;
@@ -15,13 +17,18 @@ public class PlayerController : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-		myRigidbody = GetComponent<Rigidbody2D> ();
-		mySprite = GetComponent<SpriteRenderer> ();
-		myCollider = GetComponent<CircleCollider2D> ();
-		boundaryCounter = 1;
+		myRigidbody = GetComponent<Rigidbody> ();
+		myCollider = GetComponent<SphereCollider> ();
+		myRenderer = GetComponent<MeshRenderer>();
+		boundaryCounter = 0;
 	}
-	
+
 	// Update is called once per frame
+	void Update() {
+		if (boundaryCounter <= 0) {
+			ResetPopo();
+		}
+	}
 	void FixedUpdate () 
 	{
 		float horizontal = Input.GetAxis ("Horizontal");
@@ -38,33 +45,31 @@ public class PlayerController : MonoBehaviour
 
 	private void HandleMovement(float horizontal)
 	{
-		myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, horizontal * movementspeed);
+		myRigidbody.velocity = new Vector2 (horizontal * movementspeed, myRigidbody.velocity.y);
 	}
 
 	private void SetYellow() {
-		
-		mySprite.color = Color.yellow;
-		myCollider.enabled = false;
-		myCollider.enabled = true;
 
-	gameObject.transform.localScale = new Vector2 (3, 3);
+		myRenderer.material = whiteTexture;
+		gameObject.transform.localScale = new Vector3 (1, 1, 1);
 
 	}
 
 	private void SetBlue() {
 
-		mySprite.color = Color.blue;
-		myCollider.sharedMaterial = blueMat;
-		myCollider.enabled = false;
-		myCollider.enabled = true;
-		gameObject.transform.localScale = new Vector2 (10, 10);
+		myRenderer.material = blueTexture;
+		myCollider.material = blueMat;
+		gameObject.transform.localScale = new Vector3 (2, 2, 2);
 	}
 
 	private void SetNeutral() {
-		mySprite.color = Color.white;
-		myCollider.sharedMaterial = null;
-		myCollider.enabled = false;
-		myCollider.enabled = true;
-		gameObject.transform.localScale = new Vector2 (10, 10);
+
+		myRenderer.material = whiteTexture;
+		myCollider.material = null;
+		gameObject.transform.localScale = new Vector3 (2, 2, 2);
+	}
+
+	private void ResetPopo (){
+		gameObject.transform.position = new Vector3 (0.09f, 1.46f, 0f);
 	}
 }

@@ -5,12 +5,12 @@ public class BoundaryController : MonoBehaviour {
 
 	public GameObject Popo;
 	private PlayerController controller;
-	private CircleCollider2D popoCollider;
+	private SphereCollider popoCollider;
 	// Use this for initialization
 	void Start () {
 		Popo = GameObject.Find ("Popo");
 		controller = Popo.GetComponent<PlayerController>();
-		popoCollider = Popo.GetComponent<CircleCollider2D>();
+		popoCollider = Popo.GetComponent<SphereCollider>();
 	}
 	
 	// Update is called once per frame
@@ -18,13 +18,17 @@ public class BoundaryController : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter2D(Collider2D popoCollider){
-		controller.boundaryCounter++;
-		Debug.Log("enter");
+	void OnTriggerEnter(Collider other){
+		if (other.gameObject.tag == "Player"){
+			controller.boundaryCounter++;
+			Debug.Log("enter");
+		}
 	}
 
-	void OnTriggerExit2D(Collider2D popoCollider){
-		controller.boundaryCounter++;
-		Debug.Log("exit");
+	void OnTriggerExit(Collider other){
+		if (other.gameObject.tag == "Player"){
+			controller.boundaryCounter--;
+			Debug.Log("exit");
+		}
 	}
 }
