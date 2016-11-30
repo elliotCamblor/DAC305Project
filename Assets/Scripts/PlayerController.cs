@@ -36,11 +36,11 @@ public class PlayerController : MonoBehaviour
 	}
 	void FixedUpdate () 
 	{
-	
-		if (!isMovementLocked){
-			horizontal = Input.GetAxis ("Horizontal");
-			HandleMovement (horizontal);
-		}
+		if (isMovementLocked)
+			return;
+		horizontal = Input.GetAxis ("Horizontal");
+		HandleMovement (horizontal);
+
 		if (Input.GetKey (KeyCode.Q)) {
 			SetBlue ();
 		} else if (Input.GetKey(KeyCode.W)){
