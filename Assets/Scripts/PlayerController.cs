@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
 	public Material blueTexture;
 	public Vector3 lastCheck;
 	private bool isMovementLocked;
-
+	public Material yellowTexture;
+	public Material greenTexture;
 
 	[SerializeField]
 	private float movementspeed;
@@ -40,8 +41,9 @@ public class PlayerController : MonoBehaviour
 			return;
 		horizontal = Input.GetAxis ("Horizontal");
 		HandleMovement (horizontal);
-
-		if (Input.GetKey (KeyCode.Q)) {
+		if ((Input.GetKey (KeyCode.Q)) && (Input.GetKey (KeyCode.W))) {
+			SetGreen ();
+		}else if (Input.GetKey (KeyCode.Q)) {
 			SetBlue ();
 		} else if (Input.GetKey(KeyCode.W)){
 			SetYellow();
@@ -55,9 +57,16 @@ public class PlayerController : MonoBehaviour
 		myRigidbody.velocity = new Vector2 (horizontal * movementspeed, myRigidbody.velocity.y);
 	}
 
+	private void SetGreen() {
+		
+		myRenderer.material = greenTexture;
+		myCollider.material = null;
+		gameObject.transform.localScale = new Vector3 (2, 2, 2);
+	}
+
 	private void SetYellow() {
 
-		myRenderer.material = whiteTexture;
+		myRenderer.material = yellowTexture;
 		gameObject.transform.localScale = new Vector3 (1, 1, 1);
 
 	}
