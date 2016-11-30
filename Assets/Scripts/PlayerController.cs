@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 	private bool isMovementLocked;
 	public Material yellowTexture;
 	public Material greenTexture;
-
+	public bool isClimbing;
 	[SerializeField]
 	private float movementspeed;
 	private float horizontal;
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 		lastCheck = GameObject.Find("checkpoint_0").transform.position;
 		boundaryCounter = 0;
 		isMovementLocked = false;
+		isClimbing = false;
 	}
 
 	// Update is called once per frame
