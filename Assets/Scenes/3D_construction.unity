@@ -538,6 +538,26 @@ Prefab:
       propertyPath: m_Name
       value: boundaryBox
       objectReference: {fileID: 0}
+    - target: {fileID: 197182, guid: 82f09c4347059b741b5caf828843978e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597182, guid: 82f09c4347059b741b5caf828843978e, type: 2}
+      propertyPath: m_Size.x
+      value: 9.03022099
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597182, guid: 82f09c4347059b741b5caf828843978e, type: 2}
+      propertyPath: m_Center.x
+      value: 3.00998998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597182, guid: 82f09c4347059b741b5caf828843978e, type: 2}
+      propertyPath: m_Size.y
+      value: 4.41891575
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597182, guid: 82f09c4347059b741b5caf828843978e, type: 2}
+      propertyPath: m_Center.y
+      value: -1.41226065
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82f09c4347059b741b5caf828843978e, type: 2}
   m_RootGameObject: {fileID: 2003574412}
@@ -833,6 +853,42 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 11471340, guid: 936f3e9e954f86c4eb31ea49ecf012d6, type: 2}
+      propertyPath: boundaryCounter
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471340, guid: 936f3e9e954f86c4eb31ea49ecf012d6, type: 2}
+      propertyPath: m_Drag
+      value: .899999976
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471340, guid: 936f3e9e954f86c4eb31ea49ecf012d6, type: 2}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471340, guid: 936f3e9e954f86c4eb31ea49ecf012d6, type: 2}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 13571340, guid: 936f3e9e954f86c4eb31ea49ecf012d6, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471340, guid: 936f3e9e954f86c4eb31ea49ecf012d6, type: 2}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471340, guid: 936f3e9e954f86c4eb31ea49ecf012d6, type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471340, guid: 936f3e9e954f86c4eb31ea49ecf012d6, type: 2}
+      propertyPath: yellowTexture
+      value: 
+      objectReference: {fileID: 2100000, guid: de7a4803214574611967be4729699819, type: 2}
+    - target: {fileID: 11471340, guid: 936f3e9e954f86c4eb31ea49ecf012d6, type: 2}
+      propertyPath: greenTexture
+      value: 
+      objectReference: {fileID: 2100000, guid: 006659357c5ac4da0a5161f5203faa44, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 936f3e9e954f86c4eb31ea49ecf012d6, type: 2}
   m_RootGameObject: {fileID: 1122848404}
@@ -922,13 +978,13 @@ Rigidbody:
   m_GameObject: {fileID: 1122848404}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: .899999976
   m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &1122848410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -945,6 +1001,8 @@ MonoBehaviour:
   boundaryCounter: 0
   whiteTexture: {fileID: 2100000, guid: b477791df1904ee449396f254ef42c92, type: 2}
   blueTexture: {fileID: 2100000, guid: c68c94af6ebb2fc479bcb8d46c5345dc, type: 2}
+  yellowTexture: {fileID: 2100000, guid: de7a4803214574611967be4729699819, type: 2}
+  greenTexture: {fileID: 2100000, guid: 006659357c5ac4da0a5161f5203faa44, type: 2}
   movementspeed: 10
 --- !u!1 &1135571618
 GameObject:
@@ -1674,7 +1732,7 @@ GameObject:
   - 4: {fileID: 1850829273}
   - 33: {fileID: 1850829272}
   - 23: {fileID: 1850829271}
-  - 61: {fileID: 1850829270}
+  - 65: {fileID: 1850829270}
   m_Layer: 0
   m_Name: B_Cube
   m_TagString: Untagged
@@ -1682,17 +1740,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &1850829270
-BoxCollider2D:
+--- !u!65 &1850829270
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1850829269}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: cdd98f1446e6eae4dbd9469b3164a4cb, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: 1, y: 1}
-  m_Center: {x: 0, y: 0}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.00000048, y: 1.00000048, z: 1}
+  m_Center: {x: 0, y: -2.38418579e-07, z: 0}
 --- !u!23 &1850829271
 Renderer:
   m_ObjectHideFlags: 0
@@ -1842,8 +1901,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .963372588, y: 1.23807442, z: 1}
-  m_Center: {x: -.0183131956, y: .119037338, z: 0}
+  m_Size: {x: 9.03022099, y: 4.41891575, z: 1}
+  m_Center: {x: 3.00998998, y: -1.41226065, z: 0}
 --- !u!4 &2003574415
 Transform:
   m_ObjectHideFlags: 0
