@@ -3,42 +3,59 @@ using System.Collections;
 
 public class PowerupScript : MonoBehaviour 
 {
-//	public GameObject Popo;
 	private PlayerController controller;
-//	private GameObject BBeacon = GameObject.Find ("BlueBeacon");
-//	private BoxCollider BCollider;
 
 	public float dropSpeed = 0.01f;
 
 	bool inBeacon = false;
-	bool bluePower = false;
+	public bool hasPower = false;
+
+	private GameObject blueBeacon;
+	private GameObject yellowBeacon;
+	private GameObject greenBeacon;
+	
+	private PowerupScript blueController;
+	private PowerupScript yellowController;
+	private PowerupScript greenController;
 
 
 	// Use this for initialization
 	void Start () {
-		Vector3 CapsulePos = gameObject.transform.position;
-//		BCollider = BBeacon.GetComponent<BoxCollider> ();
+		blueBeacon = GameObject.Find ("BlueCap");
+		yellowBeacon = GameObject.Find ("YellowCap");
+		greenBeacon = GameObject.Find ("GreenCap");
+		
+		blueController = blueBeacon.GetComponent<PowerupScript> ();
+		yellowController = yellowBeacon.GetComponent<PowerupScript> ();
+		greenController = greenBeacon.GetComponent<PowerupScript> ();
 	}
 
 	// Update is called once per frame
 	void Update () {
-//		Debug.Log (gameObject.transform.localPosition);
-		if (bluePower == false){
+		if (hasPower == false){
 			if (inBeacon){
 				if (gameObject.transform.localPosition == new Vector3 (0, -2.2f, 0)) {
-					bluePower = true;
-					Debug.Log ("BluePower Gained");
+					hasPower = true;
 				}
-				else if (Input.GetKey (KeyCode.Q)) {
+				else if (Input.GetKey (KeyCode.Q) && !blueController.hasPower) {
 					Vector3 down = new Vector3 (0, dropSpeed, 0);
-					gameObject.transform.position -= down; 
-					Debug.Log ("Q is press");
+					gameObject.transform.position -= down;
+				}
+				else if (Input.GetKey (KeyCode.W) && !yellowController.hasPower && blueController.hasPower) {
+					Vector3 down = new Vector3 (0, dropSpeed, 0);
+					gameObject.transform.position -= down;
+				}
+				else if ((Input.GetKey (KeyCode.Q))  && (Input.GetKey (KeyCode.W)) && !greenController.hasPower && yellowController.hasPower && blueController.hasPower) {
+					Vector3 down = new Vector3 (0, dropSpeed, 0);
+					gameObject.transform.position -= down;
 				}
 				else if (gameObject.transform.localPosition != new Vector3 (0, 0, 0)) {
 					Vector3 up = new Vector3 (0, dropSpeed, 0);
-					gameObject.transform.position += up; 
-					Debug.Log("Must move up");
+					gameObject.transform.position += up;
 				}
+			} else if (gameObject.transform.localPosition != new Vector3 (0, 0, 0)){
+				Vector3 up = new Vector3 (0, dropSpeed, 0);
+				gameObject.transform.position += up; 
 			}
 		}
 	}
@@ -46,7 +63,6 @@ public class PowerupScript : MonoBehaviour
 	void OnTriggerEnter(Collider other){	
 		if (other.gameObject.tag == "Player"){
 			inBeacon = true;
-			Debug.Log("enter");
 		}
 	}
 
