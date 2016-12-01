@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	private float movementspeed;
 	private float horizontal;
+	private Vector3 wipe;
 
 	private Vector3 reduce;
 
@@ -30,6 +31,14 @@ public class PlayerController : MonoBehaviour
 	private PowerupScript yellowController;
 	private PowerupScript greenController;
 
+	public GameObject bridge1;
+	public GameObject bridge2;
+	public GameObject bridge3;
+
+	public GameObject BG1;
+	public GameObject BG2;
+	public GameObject BG3;
+
 	// Use this for initialization
 	void Start () {
 		myRigidbody = GetComponent<Rigidbody> ();
@@ -39,6 +48,8 @@ public class PlayerController : MonoBehaviour
 		boundaryCounter = 0;
 		isMovementLocked = false;
 		isClimbing = false;
+
+		wipe = new Vector3 (2f, 0, 0);
 
 		reduce = new Vector3 (0.2f, 0.2f, 0.2f);
 
@@ -77,6 +88,21 @@ public class PlayerController : MonoBehaviour
 			SetYellow ();
 		} else {
 			SetNeutral ();
+		}
+
+		if (!bridge1.active) {
+			if (blueController.hasPower){
+				bridge1.SetActive(true);
+			}
+		}
+
+		if (BG1.active) {
+			if (bridge1.active){
+				BG1.transform.position += wipe;
+			}
+			if (BG1.transform.position.x >= 140f) {
+				BG1.SetActive (false);
+			}
 		}
 	}
 
