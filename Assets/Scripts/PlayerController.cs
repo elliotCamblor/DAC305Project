@@ -33,9 +33,19 @@ public class PlayerController : MonoBehaviour
 
 	// Update is called once per frame
 	void Update() {
+
 		if (boundaryCounter <= 0) {
 			ResetPopo();
+		}
 
+		if ((Input.GetKey (KeyCode.Q)) && (Input.GetKey (KeyCode.W))) {
+			SetGreen ();
+		}else if (Input.GetKey (KeyCode.Q)) {
+			SetBlue ();
+		} else if (Input.GetKey(KeyCode.W)){
+			SetYellow();
+		} else {
+			SetNeutral ();
 		}
 	}
 	void FixedUpdate () 
@@ -48,15 +58,7 @@ public class PlayerController : MonoBehaviour
 		}else{
 			HandleVertMovement(horizontal);
 		}
-		if ((Input.GetKey (KeyCode.Q)) && (Input.GetKey (KeyCode.W))) {
-			SetGreen ();
-		}else if (Input.GetKey (KeyCode.Q)) {
-			SetBlue ();
-		} else if (Input.GetKey(KeyCode.W)){
-			SetYellow();
-		} else {
-			SetNeutral ();
-		}
+
 	}
 
 	private void HandleMovement(float horizontal)
