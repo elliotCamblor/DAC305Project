@@ -720,6 +720,7 @@ Prefab:
     - target: {fileID: 6597182, guid: 82f09c4347059b741b5caf828843978e, type: 2}
       propertyPath: m_Center.y
       value: -.135451987
+      objectReference: {fileID: 0}
     - target: {fileID: 197182, guid: 82f09c4347059b741b5caf828843978e, type: 2}
       propertyPath: m_IsActive
       value: 1
@@ -1087,9 +1088,6 @@ Prefab:
       propertyPath: movementspeed
       value: 10
       objectReference: {fileID: 0}
-      propertyPath: boundaryCounter
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5471340, guid: 936f3e9e954f86c4eb31ea49ecf012d6, type: 2}
       propertyPath: m_Drag
       value: .899999976
@@ -1237,6 +1235,8 @@ MonoBehaviour:
   lastCheck: {x: 0, y: 0, z: 0}
   yellowTexture: {fileID: 2100000, guid: de7a4803214574611967be4729699819, type: 2}
   greenTexture: {fileID: 2100000, guid: 006659357c5ac4da0a5161f5203faa44, type: 2}
+  isClimbing: 0
+  isMovingRight: 0
   movementspeed: 10
 --- !u!1 &1135571618
 GameObject:
@@ -1318,8 +1318,9 @@ GameObject:
   - 33: {fileID: 1302717497}
   - 23: {fileID: 1302717496}
   - 65: {fileID: 1302717495}
+  - 114: {fileID: 1302717499}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: ClimbableCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1376,6 +1377,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
+--- !u!114 &1302717499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1302717494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b821b4ebd985c8e41a4c9dabf2688b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1304933712
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,8 +2104,9 @@ GameObject:
   - 33: {fileID: 1962772102}
   - 23: {fileID: 1962772101}
   - 65: {fileID: 1962772100}
+  - 114: {fileID: 1962772104}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: ClimbableCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2150,6 +2163,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!114 &1962772104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1962772099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b821b4ebd985c8e41a4c9dabf2688b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2003574412
 GameObject:
   m_ObjectHideFlags: 0

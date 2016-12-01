@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 	public Material yellowTexture;
 	public Material greenTexture;
 	public bool isClimbing;
+	public bool isMovingRight;
 	[SerializeField]
 	private float movementspeed;
 	private float horizontal;
@@ -41,10 +42,11 @@ public class PlayerController : MonoBehaviour
 		if (isMovementLocked)
 			return;
 		horizontal = Input.GetAxis ("Horizontal");
-		//if (!isClimbing){
+		if (!isClimbing) {
 			HandleMovement (horizontal);
-
-		//else 
+		}else{
+			HandleVertMovement(horizontal);
+		}
 		if ((Input.GetKey (KeyCode.Q)) && (Input.GetKey (KeyCode.W))) {
 			SetGreen ();
 		}else if (Input.GetKey (KeyCode.Q)) {
@@ -61,29 +63,36 @@ public class PlayerController : MonoBehaviour
 		myRigidbody.velocity = new Vector2 (horizontal * movementspeed, myRigidbody.velocity.y);
 	}
 
+	private void HandleVertMovement(float horizontal)
+	{
+		if (isMovingRight) {
+			myRigidbody.velocity = new Vector2 (0, horizontal * movementspeed);
+		} else {
+			myRigidbody.velocity = new Vector2 (0, -horizontal * movementspeed);
+		}
+	}
 	private void SetGreen() {
-		
 		myRenderer.material = greenTexture;
 		myCollider.material = null;
 		gameObject.transform.localScale = new Vector3 (2, 2, 2);
 	}
 
 	private void SetYellow() {
-
+		isClimbing = false;
 		myRenderer.material = yellowTexture;
 		gameObject.transform.localScale = new Vector3 (1, 1, 1);
 
 	}
 
 	private void SetBlue() {
-
+		isClimbing = false;
 		myRenderer.material = blueTexture;
 		myCollider.material = blueMat;
 		gameObject.transform.localScale = new Vector3 (2, 2, 2);
 	}
 
 	private void SetNeutral() {
-
+		isClimbing = false;
 		myRenderer.material = whiteTexture;
 		myCollider.material = null;
 		gameObject.transform.localScale = new Vector3 (2, 2, 2);
