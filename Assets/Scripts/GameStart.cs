@@ -20,7 +20,7 @@ public class GameStart : MonoBehaviour {
 		}
 
 		if (!start.active) {
-			cam.camera.orthographicSize += 0.0095f;
+			cam.camera.orthographicSize += 0.02f;
 			Debug.Log ("Increase Size");
 		}
 		if (cam.camera.orthographicSize >= 7f) {

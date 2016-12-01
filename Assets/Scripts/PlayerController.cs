@@ -33,11 +33,10 @@ public class PlayerController : MonoBehaviour
 
 	public GameObject bridge1;
 	public GameObject bridge2;
-	public GameObject bridge3;
+
 
 	public GameObject BG1;
-	public GameObject BG2;
-	public GameObject BG3;
+
 
 	// Use this for initialization
 	void Start () {
@@ -93,6 +92,12 @@ public class PlayerController : MonoBehaviour
 		if (!bridge1.active) {
 			if (blueController.hasPower){
 				bridge1.SetActive(true);
+			}
+		}
+
+		if (!bridge2.active) {
+			if (yellowController.hasPower){
+				bridge2.SetActive(true);
 			}
 		}
 
