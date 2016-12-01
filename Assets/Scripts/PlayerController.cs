@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
 		isMovementLocked = false;
 		isClimbing = false;
 
-		reduce = new Vector3 (0.02f, 0.02f, 0.02f);
+		reduce = new Vector3 (0.2f, 0.2f, 0.2f);
 
 		blueBeacon = GameObject.Find ("BlueCap");
 		yellowBeacon = GameObject.Find ("YellowCap");
@@ -58,15 +58,6 @@ public class PlayerController : MonoBehaviour
 			ResetPopo();
 		}
 
-		if ((Input.GetKey (KeyCode.Q)) && (Input.GetKey (KeyCode.W))) {
-			SetGreen ();
-		}else if (Input.GetKey (KeyCode.Q)) {
-			SetBlue ();
-		} else if (Input.GetKey(KeyCode.W)){
-			SetYellow();
-		} else {
-			SetNeutral ();
-		}
 	}
 	void FixedUpdate () 
 	{
@@ -106,7 +97,7 @@ public class PlayerController : MonoBehaviour
 	private void SetGreen() {
 		myRenderer.material = greenTexture;
 		myCollider.material = null;
-		if (gameObject.transform.localScale != new Vector3 (2, 2, 2)) {
+		if (gameObject.transform.localScale.x < 2) {
 			gameObject.transform.localScale += reduce;
 		}
 	}
@@ -114,7 +105,7 @@ public class PlayerController : MonoBehaviour
 	private void SetYellow() {
 		isClimbing = false;
 		myRenderer.material = yellowTexture;
-		if (gameObject.transform.localScale != new Vector3 (1, 1, 1)) {
+		if (gameObject.transform.localScale.x >= 1 ) {
 			gameObject.transform.localScale -= reduce;
 		}
 //		gameObject.transform.localScale = new Vector3 (1, 1, 1);
@@ -125,7 +116,7 @@ public class PlayerController : MonoBehaviour
 		isClimbing = false;
 		myRenderer.material = blueTexture;
 		myCollider.material = blueMat;
-		if (gameObject.transform.localScale != new Vector3 (2, 2, 2)) {
+		if (gameObject.transform.localScale.x < 2) {
 			gameObject.transform.localScale += reduce;
 		}
 	}
@@ -134,7 +125,7 @@ public class PlayerController : MonoBehaviour
 		isClimbing = false;
 		myRenderer.material = whiteTexture;
 		myCollider.material = null;
-		if (gameObject.transform.localScale != new Vector3 (2, 2, 2)) {
+		if (gameObject.transform.localScale.x < 2) {
 			gameObject.transform.localScale += reduce;
 		}
 //		gameObject.transform.localScale = new Vector3 (2, 2, 2);
