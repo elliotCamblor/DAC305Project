@@ -20,6 +20,16 @@ public class PlayerController : MonoBehaviour
 	private float movementspeed;
 	private float horizontal;
 
+	private Vector3 reduce;
+
+	private GameObject blueBeacon;
+	private GameObject yellowBeacon;
+	private GameObject greenBeacon;
+	
+	private PowerupScript blueController;
+	private PowerupScript yellowController;
+	private PowerupScript greenController;
+
 	// Use this for initialization
 	void Start () {
 		myRigidbody = GetComponent<Rigidbody> ();
@@ -29,6 +39,16 @@ public class PlayerController : MonoBehaviour
 		boundaryCounter = 0;
 		isMovementLocked = false;
 		isClimbing = false;
+
+		reduce = new Vector3 (0.02f, 0.02f, 0.02f);
+
+		blueBeacon = GameObject.Find ("BlueCap");
+		yellowBeacon = GameObject.Find ("YellowCap");
+		greenBeacon = GameObject.Find ("GreenCap");
+		
+		blueController = blueBeacon.GetComponent<PowerupScript> ();
+		yellowController = yellowBeacon.GetComponent<PowerupScript> ();
+		greenController = greenBeacon.GetComponent<PowerupScript> ();
 	}
 
 	// Update is called once per frame
@@ -58,8 +78,17 @@ public class PlayerController : MonoBehaviour
 		}else{
 			HandleVertMovement(horizontal);
 		}
-
+		if ((Input.GetKey (KeyCode.Q)) && (Input.GetKey (KeyCode.W)) && (greenController.hasPower)) {
+			SetGreen ();
+		} else if (Input.GetKey (KeyCode.Q) && (blueController.hasPower)) {
+			SetBlue ();
+		} else if (Input.GetKey (KeyCode.W)&& (yellowController.hasPower)) {
+			SetYellow ();
+		} else {
+			SetNeutral ();
+		}
 	}
+
 
 	private void HandleMovement(float horizontal)
 	{
@@ -77,13 +106,18 @@ public class PlayerController : MonoBehaviour
 	private void SetGreen() {
 		myRenderer.material = greenTexture;
 		myCollider.material = null;
-		gameObject.transform.localScale = new Vector3 (2, 2, 2);
+		if (gameObject.transform.localScale != new Vector3 (2, 2, 2)) {
+			gameObject.transform.localScale += reduce;
+		}
 	}
 
 	private void SetYellow() {
 		isClimbing = false;
 		myRenderer.material = yellowTexture;
-		gameObject.transform.localScale = new Vector3 (1, 1, 1);
+		if (gameObject.transform.localScale != new Vector3 (1, 1, 1)) {
+			gameObject.transform.localScale -= reduce;
+		}
+//		gameObject.transform.localScale = new Vector3 (1, 1, 1);
 
 	}
 
@@ -91,14 +125,19 @@ public class PlayerController : MonoBehaviour
 		isClimbing = false;
 		myRenderer.material = blueTexture;
 		myCollider.material = blueMat;
-		gameObject.transform.localScale = new Vector3 (2, 2, 2);
+		if (gameObject.transform.localScale != new Vector3 (2, 2, 2)) {
+			gameObject.transform.localScale += reduce;
+		}
 	}
 
 	private void SetNeutral() {
 		isClimbing = false;
 		myRenderer.material = whiteTexture;
 		myCollider.material = null;
-		gameObject.transform.localScale = new Vector3 (2, 2, 2);
+		if (gameObject.transform.localScale != new Vector3 (2, 2, 2)) {
+			gameObject.transform.localScale += reduce;
+		}
+//		gameObject.transform.localScale = new Vector3 (2, 2, 2);
 	}
 
 	private void ResetPopo (){
