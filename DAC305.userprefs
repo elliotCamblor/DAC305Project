@@ -1,8 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\Documents\MenuTest\Assets\Scripts\Menu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CameraController.cs">
     <Files>
-      <File FileName="..\..\..\Documents\MenuTest\Assets\Scripts\Menu.cs" Line="15" Column="4" />
+      <File FileName="Assets\Scripts\PowerupScript.cs" Line="26" Column="7" />
+      <File FileName="Assets\Scripts\BoundaryController.cs" Line="20" Column="23" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="49" Column="13" />
+      <File FileName="Assets\Scripts\CameraController.cs" Line="19" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

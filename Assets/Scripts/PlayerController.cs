@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update() {
 		if (boundaryCounter <= 0) {
-			Debug.Log ("here");
-			ResetPopo();
+//			Debug.Log ("here");
+//			ResetPopo();
 		}
 	}
 	void FixedUpdate () 
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
 	private void HandleMovement(float horizontal)
 	{
 		myRigidbody.velocity = new Vector2 (horizontal * movementspeed, myRigidbody.velocity.y);
-		Debug.Log (myRigidbody.velocity);
+//		Debug.Log (myRigidbody.velocity);
 	}
 
 	private void SetYellow() {
