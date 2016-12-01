@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 			SetGreen ();
 		} else if (Input.GetKey (KeyCode.Q) && (blueController.hasPower)) {
 			SetBlue ();
-		} else if (Input.GetKey (KeyCode.W)&& (yellowController.hasPower)) {
+		} else if (Input.GetKey (KeyCode.W)&&(yellowController.hasPower)) {
 			SetYellow ();
 		} else {
 			SetNeutral ();
@@ -104,6 +104,7 @@ public class PlayerController : MonoBehaviour
 
 	private void SetYellow() {
 		isClimbing = false;
+		myCollider.material = null;
 		myRenderer.material = yellowTexture;
 		if (gameObject.transform.localScale.x >= 1 ) {
 			gameObject.transform.localScale -= reduce;

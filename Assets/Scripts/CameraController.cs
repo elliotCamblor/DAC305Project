@@ -34,7 +34,7 @@ public class CameraController : MonoBehaviour {
 //		yellowController = yellowBeacon.GetComponent<PowerupScript> ();
 //		greenController = greenBeacon.GetComponent<PowerupScript> ();
 
-		offset = new Vector3(0, 2, 5);
+		offset = new Vector3(0, 2, 10);
 		 
 		tr1_intro = track1_intro.GetComponent<AudioSource> ();
 		tr1_loop = track1_loop.GetComponent<AudioSource> ();

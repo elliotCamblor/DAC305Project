@@ -41,11 +41,11 @@ public class PowerupScript : MonoBehaviour
 					Vector3 down = new Vector3 (0, dropSpeed, 0);
 					gameObject.transform.position -= down;
 				}
-				else if (Input.GetKey (KeyCode.W) && !yellowController.hasPower && blueController.hasPower) {
+				else if (Input.GetKey (KeyCode.W) && !yellowController.hasPower) {
 					Vector3 down = new Vector3 (0, dropSpeed, 0);
 					gameObject.transform.position -= down;
 				}
-				else if ((Input.GetKey (KeyCode.Q))  && (Input.GetKey (KeyCode.W)) && !greenController.hasPower && yellowController.hasPower && blueController.hasPower) {
+				else if ((Input.GetKey (KeyCode.Q))  && (Input.GetKey (KeyCode.W)) && !greenController.hasPower) {
 					Vector3 down = new Vector3 (0, dropSpeed, 0);
 					gameObject.transform.position -= down;
 				}
