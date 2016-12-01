@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour {
 	private Vector3 offset;
 	// Use this for initialization
 	void Start () {
-		offset = transform.position - player.transform.position;
+		offset = transform.position + new Vector3(0,-2,-1);
 	}
 
 	void Update () {

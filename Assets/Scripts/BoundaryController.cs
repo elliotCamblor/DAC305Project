@@ -17,6 +17,7 @@ public class BoundaryController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
+		Debug.Log (controller.boundaryCounter);
 		if (other.gameObject.tag == "Player"){
 			controller.boundaryCounter++;
 		}
