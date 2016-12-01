@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
 	void Update() {
 		if (boundaryCounter <= 0) {
 			ResetPopo();
+
 		}
 	}
 	void FixedUpdate () 
