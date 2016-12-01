@@ -26,15 +26,15 @@ public class CameraController : MonoBehaviour {
 	private Vector3 offset;
 	// Use this for initialization
 	void Start () {
-		blueBeacon = GameObject.Find ("BlueCap");
-		yellowBeacon = GameObject.Find ("YellowCap");
-		greenBeacon = GameObject.Find ("GreenCap");
+//		blueBeacon = GameObject.Find ("BlueCap");
+//		yellowBeacon = GameObject.Find ("YellowCap");
+//		greenBeacon = GameObject.Find ("GreenCap");
 
-		blueController = blueBeacon.GetComponent<PowerupScript> ();
-		yellowController = yellowBeacon.GetComponent<PowerupScript> ();
-		greenController = greenBeacon.GetComponent<PowerupScript> ();
+//		blueController = blueBeacon.GetComponent<PowerupScript> ();
+//		yellowController = yellowBeacon.GetComponent<PowerupScript> ();
+//		greenController = greenBeacon.GetComponent<PowerupScript> ();
 
-		offset = new Vector3(0,-2, 10);
+		offset = new Vector3(0, 2, 5);
 		 
 		tr1_intro = track1_intro.GetComponent<AudioSource> ();
 		tr1_loop = track1_loop.GetComponent<AudioSource> ();
@@ -58,45 +58,46 @@ public class CameraController : MonoBehaviour {
 //		if (!track1_intro.active) {
 //			track1_loop.SetActive(true);
 //		}
-		if (Input.GetKey (KeyCode.Space) && tr1_intro.volume == 1){
-			tr1_intro.volume = 0.95f;
-		}
 
-		if (tr1_intro.volume < 0.99f){
-			tr1_intro.volume -= 0.005f;
-		}
-
-		if (Input.GetKey (KeyCode.Space) && tr1_loop.volume == 0){
-			tr1_loop.volume = 0.05f;
-		}
-		
-		if (tr1_loop.volume > 0.01f){
-			tr1_loop.volume += 0.005f;
-		}
-
-		if (track1_loop.active){
-			if (blueController.hasPower) {
-				track1_loop.SetActive(false);
-				Debug.Log ("Turn off loop 1");
-				track2_loop.SetActive(true);
-			}
-		}
-
-		if (track2_loop.active){
-			if (yellowController.hasPower) {
-				track2_loop.SetActive(false);
-				Debug.Log ("Turn off loop 1");
-				track3_loop.SetActive(true);
-			}
-		}
-
-		if (track3_loop.active){
-			if (greenController.hasPower) {
-				track3_loop.SetActive(false);
-				Debug.Log ("Turn off loop 1");
-				track4_loop.SetActive(true);
-			}
-		}
+//		if (Input.GetKey (KeyCode.Space) && tr1_intro.volume == 1){
+//			tr1_intro.volume = 0.95f;
+//		}
+//
+//		if (tr1_intro.volume < 0.99f){
+//			tr1_intro.volume -= 0.005f;
+//		}
+//
+//		if (Input.GetKey (KeyCode.Space) && tr1_loop.volume == 0){
+//			tr1_loop.volume = 0.05f;
+//		}
+//		
+//		if (tr1_loop.volume > 0.01f){
+//			tr1_loop.volume += 0.005f;
+//		}
+//
+//		if (track1_loop.active){
+//			if (blueController.hasPower) {
+//				track1_loop.SetActive(false);
+//				Debug.Log ("Turn off loop 1");
+//				track2_loop.SetActive(true);
+//			}
+//		}
+//
+//		if (track2_loop.active){
+//			if (yellowController.hasPower) {
+//				track2_loop.SetActive(false);
+//				Debug.Log ("Turn off loop 1");
+//				track3_loop.SetActive(true);
+//			}
+//		}
+//
+//		if (track3_loop.active){
+//			if (greenController.hasPower) {
+//				track3_loop.SetActive(false);
+//				Debug.Log ("Turn off loop 1");
+//				track4_loop.SetActive(true);
+//			}
+//		}
 	}
 
 	// Update is called once per frame

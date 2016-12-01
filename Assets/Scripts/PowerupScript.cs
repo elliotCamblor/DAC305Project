@@ -34,7 +34,7 @@ public class PowerupScript : MonoBehaviour
 	void Update () {
 		if (hasPower == false){
 			if (inBeacon){
-				if (gameObject.transform.localPosition == new Vector3 (0, -2.2f, 0)) {
+				if (gameObject.transform.localPosition.y <= -2.2f) {
 					hasPower = true;
 				}
 				else if (Input.GetKey (KeyCode.Q) && !blueController.hasPower) {

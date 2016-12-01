@@ -1,11 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BoundaryController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="36" Column="3" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="5" Column="2" />
       <File FileName="Assets\Scripts\BoundaryController.cs" Line="32" Column="1" />
       <File FileName="Assets\Scripts\ClimbingController.cs" Line="27" Column="3" />
-      <File FileName="Assets\Scripts\PowerupScript.cs" Line="7" Column="1" />
+      <File FileName="Assets\Scripts\PowerupScript.cs" Line="75" Column="2" />
+      <File FileName="Assets\Scripts\PlatformController.cs" Line="27" Column="5" />
+      <File FileName="Assets\Scripts\CameraController.cs" Line="107" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
